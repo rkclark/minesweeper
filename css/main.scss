@@ -1,0 +1,64 @@
+$mainfont:'Open Sans', sans-serif;
+$standardpadding: 10px;
+$inputspacing: 15px;
+
+$covered: #828282;
+$uncovered: #d7d7d9;
+
+
+// Palette URL: http://paletton.com/#uid=70j1W0k00qX00++00Dp00kl0ud5 */
+
+$color-complement-0: #8F8F8F;	// Main Complement color */
+$color-complement-1: #FFFFFF;
+$color-complement-2: #C0C0C0;
+$color-complement-3: #6C6C6C;
+$color-complement-4: #444545;
+
+
+body {
+  font-family: $mainfont;
+  // max-height: 100%;
+  background-color: $color-complement-1;
+}
+
+.msrow div {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  margin: 1px;
+  font-weight: bold;
+}
+
+.mine {
+
+}
+
+.msrow {
+  height: 32px;
+
+}
+
+.covered {
+  background-color: $covered;
+
+}
+
+.uncovered {
+  background-color: $uncovered;
+
+}
+
+.marked {
+  background: url("../img/warning.svg") no-repeat center/25px 25px;
+
+}
+
+.revealed {
+  background-color: green;
+
+}
+
+.detonated {
+  background-color: orange;
+}
