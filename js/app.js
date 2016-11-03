@@ -2,19 +2,18 @@
 //Generate game
 $(document).ready(generateGame());
 
-
-//Generate the game
 function generateGame() {
+  mineCount = 0;
   createRows();
   //Use createCells function to populate each .msrow div with a row of cells determined by the value of columns
   $(".msrow").each(createCells);
   //Seed mines in newly created cells
   $(".msrow div").each(seedMines);
   //Post mine Count
-  generateMineCount();
+  $("#counter span").text(mineCount);
+  // generateMineCount();
 }
 
-//Create rows
 function createRows() {
 
     for (var i =1; i <= numberOfRows; i+=1){
@@ -36,14 +35,10 @@ function seedMines() {
   var seedNumber = Math.random();
   if(seedNumber < minesPercentage) {
     $(this).addClass("mine");
+    mineCount += 1;
   } else {
     $(this).addClass("notmine");
   }
-}
-
-function generateMineCount() {
-  mineCount = allMinesMarked();
-  $("#counter span").text(mineCount);
 }
 
 function getMineProximity(neighbourIds) {
@@ -119,33 +114,29 @@ function coveredClick() {
     gameOver();
   } else {
     uncoverCells.call(this);
+    if ($(".notmine.covered").length) {
+      //stil got covered mines - do nothing
+    } else {
+      //game is won
+      console.log("GAMEWON");
+      gameWon();
+    }
   }
 }
 
 function coveredRightClick(e) {
   if(e.which == 3) //3 is the which type for right click
   {
-      $(this).addClass("marked");
-      var unmarkedMines = allMinesMarked();
-      if (unmarkedMines === 0) {
-        gameWon();
+      if ($(this).hasClass("marked")) {
+        $(this).removeClass("marked");
+        mineCount += 1;
+        $("#counter span").text(mineCount)
+      } else {
+        $(this).addClass("marked");
+        mineCount -= 1;
+        $("#counter span").text(mineCount)
       }
   }
-}
-
-function allMinesMarked() {
-  var unmarkedMines = 0;
-  //Iterate through all cells with class "mine" and check if they are also "marked"
-  $(".mine").each(function() {
-    if ($(this).hasClass("marked")) {
-      //do nothing
-    } else {
-      //Count the mines that are still unmarked
-      unmarkedMines += 1;
-    }
-  }
-);
-  return unmarkedMines;
 }
 
 function gameWon() {
@@ -175,14 +166,9 @@ $("#game").on("contextmenu",".covered",function(e) {
   }
 );
 
-//Allow user to reset by clicking the reset button
+//Allow user to reset by clicking the reset or generate buttons
 
-$("#reset").click(function(e) {
-  e.preventDefault();
-  resetGame();
-});
-
-$("#generate").click(function(e) {
+$("#reset, #generate").click(function(e) {
   e.preventDefault();
   resetGame();
 });

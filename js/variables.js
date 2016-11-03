@@ -5,9 +5,7 @@ var numberOfRows = 20;
 var $msrowDiv = "<div>&nbsp;</div>";
 var $columnDiv = "<div>&nbsp;</div>";
 var minesPercentage = 0.15;
-var mineCount = "";
-
-//Update variables on events
+var mineCount = 0;
 
 //Update number of rows global variable
 function rowUpdate() {
@@ -22,7 +20,6 @@ function columnUpdate() {
 //Update difficulty setting global variable
 function difficultyUpdate() {
   minesPercentage = $("input:radio[name=difficulty]:checked").val();
-  console.log(minesPercentage);
 }
 
 $("#vertical").keyup(rowUpdate).change(rowUpdate);
