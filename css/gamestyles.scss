@@ -1,0 +1,42 @@
+
+.msrow div {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  margin: 1px;
+  font-weight: bold;
+}
+
+.mine {
+
+}
+
+.msrow {
+  height: 32px;
+
+}
+
+.covered {
+  background-color: $covered;
+
+}
+
+.uncovered {
+  background-color: $uncovered;
+
+}
+
+.marked {
+  background: url("../img/warning.svg") no-repeat center/25px 25px;
+
+}
+
+.revealed {
+  background-color: green;
+
+}
+
+.detonated {
+  background-color: orange;
+}
