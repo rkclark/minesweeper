@@ -1,0 +1,32 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "Minesweeper in js",
+  "main": "index.js",
+  "scripts": {
+    "test": "Test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkclark/minesweeper.git"
+  },
+  "keywords": [
+    "Minesweeper"
+  ],
+  "author": "Rick Clark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rkclark/minesweeper/issues"
+  },
+  "homepage": "https://github.com/rkclark/minesweeper#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.5.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-uglify": "^2.0.0"
+  },
+  "dependencies": {}
+}
