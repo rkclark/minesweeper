@@ -1,4 +1,5 @@
 
+
 //Generate game
 $(document).ready(generateGame());
 

@@ -75,8 +75,8 @@ gulp.task('default', function (callback) {
 
 //Build process to construct app in dist folder
 gulp.task('build', function (callback) {
-  runSequence('clean:dist',
-    ['sass', 'useref', 'images'],
+  runSequence('clean:dist', 'sass',
+    ['useref', 'images'],
     callback
   )
 })
