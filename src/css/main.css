@@ -1,16 +1,20 @@
 body {
-  font-family: "Rubik", sans-serif; }
+  font-family: "Rubik", sans-serif;
+  background-color: #31334A;
+  color: #fff; }
 
 #gamecontainer {
   max-height: 100vw; }
 
 .cell {
   text-align: center;
-  margin: 1px;
+  margin: 3px;
   height: auto;
   padding: 0px;
   cursor: pointer;
-  justify-content: center; }
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .cell:before {
   content: "";
@@ -18,14 +22,54 @@ body {
   padding-top: 100%;
   float: left; }
 
+.cell-text {
+  margin: 0;
+  height: 100%; }
+
+.msrow {
+  margin: 0px !important; }
+
 .covered {
-  background-color: #828282; }
+  background-color: #be164e; }
 
 .uncovered {
-  background-color: #d7d7d9; }
+  background-color: #989bc7; }
 
 .marked {
-  background: url("../img/warning.svg") no-repeat center/25px 25px; }
+  background: url("../img/mine.svg") no-repeat;
+  background-size: cover;
+  background-color: #be164e;
+  animation: myfirst 3s linear infinite;
+  -moz-animation: myfirst 3s linear infinite;
+  /* Firefox */
+  -webkit-animation: myfirst 3s linear infinite;
+  /* Safari and Chrome */
+  -o-animation: myfirst 3s linear infinite;
+  /* Opera */ }
+
+@keyframes myfirst {
+  0%, 100% {
+    background: #be164e; }
+  50% {
+    background: #FFB744; } }
+
+@-moz-keyframes myfirst /* Firefox */ {
+  0%, 100% {
+    background: #be164e; }
+  50% {
+    background: #FFB744; } }
+
+@-webkit-keyframes myfirst /* Safari and Chrome */ {
+  0%, 100% {
+    background: #be164e; }
+  50% {
+    background: #FFB744; } }
+
+@-o-keyframes myfirst /* Opera */ {
+  0%, 100% {
+    background: #be164e; }
+  50% {
+    background: #FFB744; } }
 
 .revealed {
   background-color: green; }

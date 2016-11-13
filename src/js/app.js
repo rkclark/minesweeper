@@ -105,7 +105,7 @@ function uncoverCells() {
       }
   } else {
     //Our mine proximity is not 0 so we uncover the target cell and add the mine proximity as text
-    $(this).removeClass("covered").addClass("uncovered").text(mineProximity);
+    $(this).removeClass("covered").addClass("uncovered").append( "<div class=\"cell-text-wrapper\"><p class=\"cell-text\">"+mineProximity+"</p></div>" );
   }
 }
 
@@ -133,7 +133,7 @@ function coveredRightClick(e) {
         mineCount += 1;
         $("#counter span").text(mineCount)
       } else {
-        $(this).addClass("marked");
+        $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
         mineCount -= 1;
         $("#counter span").text(mineCount)
       }
@@ -163,6 +163,11 @@ $("#game").on("mousedown",".covered",coveredRightClick);
 
 //Stop right click on covered cell opening right click menu
 $("#game").on("contextmenu",".covered",function(e) {
+  e.preventDefault();
+  }
+);
+
+$("#game").on("contextmenu",function(e) {
   e.preventDefault();
   }
 );

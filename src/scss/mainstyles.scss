@@ -10,8 +10,10 @@ $color-complement-2: #C0C0C0;
 $color-complement-3: #6C6C6C;
 $color-complement-4: #444545;
 
-
+$background-col: #31334A;
 
 body {
   font-family: $mainfont;
+  background-color: $background-col;
+  color: #fff;
 }

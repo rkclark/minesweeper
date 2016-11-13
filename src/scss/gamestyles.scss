@@ -1,9 +1,18 @@
 
-$covered: #828282;
-$uncovered: #d7d7d9;
+// $covered: #828282;
+// $uncovered: #d7d7d9;
+
+$covered: #be164e;
+$uncovered: #989bc7;
+$marked: #FFB744;
+$markedglow: #be164e;
+
 
 #gamecontainer {
   max-height: 100vw;
+}
+
+#game {
 
 }
 
@@ -12,12 +21,14 @@ $uncovered: #d7d7d9;
   // width: 30px;
   // height: 30px;
   text-align: center;
-  margin: 1px;
+  margin: 3px;
   height: auto;
   // min-width: 1.5em;
   padding: 0px;
   cursor: pointer;
+  display: flex;
   justify-content: center;
+  align-items: center;
   // font-weight: bold;
 }
 
@@ -28,12 +39,24 @@ $uncovered: #d7d7d9;
     float: left;
 }
 
+// .cell-text-wrapper {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.cell-text {
+  margin: 0;
+  height: 100%;
+
+}
+
 .mine {
 
 }
 
 .msrow {
-  // height: 32px;
+  margin: 0px !important;
 }
 
 .covered {
@@ -47,9 +70,43 @@ $uncovered: #d7d7d9;
 }
 
 .marked {
-  background: url("../img/warning.svg") no-repeat center/25px 25px;
+  //  background: url("../img/mine.svg") no-repeat center/25px 25px;
+   background: url("../img/mine.svg") no-repeat;
+   background-size: cover;
+  // background-image: url("../img/mine.svg") no-repeat center;
+   background-color: $covered;
+  //background: $covered,  url("../img/mine.svg");
+  animation:myfirst 3s linear infinite;
+  -moz-animation:myfirst 3s linear infinite; /* Firefox */
+  -webkit-animation:myfirst 3s linear infinite; /* Safari and Chrome */
+  -o-animation:myfirst 3s linear infinite; /* Opera */
+  }
 
-}
+  @keyframes myfirst
+  {
+  0%,100%   {background:$markedglow;}
+  50%  {background:$marked;}
+  }
+
+  @-moz-keyframes myfirst /* Firefox */
+  {
+    0%,100%   {background:$markedglow;}
+    50%  {background:$marked;}
+  }
+
+  @-webkit-keyframes myfirst /* Safari and Chrome */
+  {
+    0%,100%   {background:$markedglow;}
+    50%  {background:$marked;}
+  }
+
+  @-o-keyframes myfirst /* Opera */
+  {
+    0%,100%   {background:$markedglow;}
+    50%  {background:$marked;}
+  }
+
+
 
 .revealed {
   background-color: green;
