@@ -2,13 +2,30 @@
 $covered: #828282;
 $uncovered: #d7d7d9;
 
-.msrow div {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+#gamecontainer {
+  max-height: 100vw;
+
+}
+
+.cell {
+  // display: inline-block;
+  // width: 30px;
+  // height: 30px;
   text-align: center;
   margin: 1px;
-  font-weight: bold;
+  height: auto;
+  // min-width: 1.5em;
+  padding: 0px;
+  cursor: pointer;
+  justify-content: center;
+  // font-weight: bold;
+}
+
+.cell:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+    float: left;
 }
 
 .mine {
@@ -16,8 +33,7 @@ $uncovered: #d7d7d9;
 }
 
 .msrow {
-  height: 32px;
-
+  // height: 32px;
 }
 
 .covered {

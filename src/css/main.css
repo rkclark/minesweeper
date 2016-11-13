@@ -1,16 +1,22 @@
 body {
   font-family: "Rubik", sans-serif; }
 
-.msrow div {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+#gamecontainer {
+  max-height: 100vw; }
+
+.cell {
   text-align: center;
   margin: 1px;
-  font-weight: bold; }
+  height: auto;
+  padding: 0px;
+  cursor: pointer;
+  justify-content: center; }
 
-.msrow {
-  height: 32px; }
+.cell:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  float: left; }
 
 .covered {
   background-color: #828282; }

@@ -2,8 +2,8 @@
 //Set initial variables
 var numberOfColumns = 20;
 var numberOfRows = 20;
-var $msrowDiv = "<div>&nbsp;</div>";
-var $columnDiv = "<div>&nbsp;</div>";
+var $msrowDiv = "<div></div>";
+var $columnDiv = "<div></div>";
 var minesPercentage = 0.15;
 var mineCount = 0;
 

@@ -19,7 +19,7 @@ function createRows() {
 
     for (var i =1; i <= numberOfRows; i+=1){
     //Create row divs inside the game container div
-    $($msrowDiv).addClass("msrow").appendTo("#game");
+    $($msrowDiv).addClass("msrow row").appendTo("#game");
   }
 }
 
@@ -28,7 +28,7 @@ function createCells(rowNumber) {
   rowNumber += 1; //rowNumber is passed as 0 to 19 but want it to be 1 to 20
   var rowOrder = numberOfRows + 1 -rowNumber; //since the loop traverses the row divs from top to bottom, this gives a Y position value going from high to low rather than low to high
   for (var j=1; j<= numberOfColumns; j+=1) {
-    $($columnDiv).addClass("covered cell").attr("id",j+"_"+rowOrder).appendTo(this); //Adds the cell div with an ID based on grid position X_Y
+    $($columnDiv).addClass("covered cell col-xs").attr("id",j+"_"+rowOrder).appendTo(this); //Adds the cell div with an ID based on grid position X_Y
   }
 }
 
