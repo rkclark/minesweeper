@@ -11,7 +11,7 @@ function generateGame() {
   //Seed mines in newly created cells
   $(".msrow div").each(seedMines);
   //Post mine Count
-  $("#counter span").text(mineCount);
+  $("#counter").text(mineCount);
   // generateMineCount();
 }
 
@@ -81,7 +81,8 @@ function getNeighbourIds(inputId) {
 }
 
 function gameOver() {
-  $(".mine").removeClass("marked").addClass("detonated");
+  $(".notmine.marked").removeClass("marked").addClass("uncovered");
+  $(".mine").removeClass("marked").addClass("detonated").empty().append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
   $("#msgbox").text("Detonation! You have lost. Press Reset to try again.");
 }
 
@@ -129,13 +130,13 @@ function coveredRightClick(e) {
   if(e.which == 3) //3 is the which type for right click
   {
       if ($(this).hasClass("marked")) {
-        $(this).removeClass("marked");
+        $(this).removeClass("marked").empty();
         mineCount += 1;
-        $("#counter span").text(mineCount)
+        $("#counter").text(mineCount);
       } else {
         $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
         mineCount -= 1;
-        $("#counter span").text(mineCount)
+        $("#counter").text(mineCount);
       }
   }
 }
@@ -177,4 +178,24 @@ $("#game").on("contextmenu",function(e) {
 $("#reset, #generate").click(function(e) {
   e.preventDefault();
   resetGame();
+  setHeight();
+});
+
+//Spin settings coveredRightClick
+$("#settings-icon").click(function(){
+  $(this).toggleClass("rotate");
+  $("#settingscontainer").slideToggle("slow");
+});
+
+function setHeight() {
+  windowHeight = $(window).innerHeight();
+  // $("#game").css('max-height', windowHeight);
+  $(".msrow").css('max-width', windowHeight*0.8);
+};
+
+$(document).ready(function() {
+  setHeight();
+  $(window).resize(function() {
+    setHeight();
+  });
 });

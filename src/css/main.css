@@ -3,8 +3,42 @@ body {
   background-color: #31334A;
   color: #fff; }
 
-#gamecontainer {
-  max-height: 100vw; }
+.btn-outline-primary {
+  color: #FFB744;
+  border-color: #FFB744;
+  border: 2px solid; }
+  .btn-outline-primary:hover {
+    background-color: #FFB744;
+    border-color: #FFB744; }
+  .btn-outline-primary:active, .btn-outline-primary:focus {
+    border-color: #FFB744;
+    background-color: transparent;
+    color: #FFB744; }
+  .btn-outline-primary:active:hover {
+    background-color: #FFB744; }
+
+#header {
+  margin-bottom: 0px; }
+
+#header::before {
+  content: "[";
+  color: #FFB744; }
+
+#header::after {
+  content: "]";
+  color: #FFB744; }
+
+#settings-icon {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  border-radius: 100%;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear; }
+
+#settings-icon.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.5s linear; }
 
 .cell {
   text-align: center;
@@ -14,7 +48,8 @@ body {
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  font-weight: bold; }
 
 .cell:before {
   content: "";
@@ -27,7 +62,7 @@ body {
   height: 100%; }
 
 .msrow {
-  margin: 0px !important; }
+  margin: auto; }
 
 .covered {
   background-color: #be164e; }
@@ -35,9 +70,7 @@ body {
 .uncovered {
   background-color: #989bc7; }
 
-.marked {
-  background: url("../img/mine.svg") no-repeat;
-  background-size: cover;
+.marked, .detonated {
   background-color: #be164e;
   animation: myfirst 3s linear infinite;
   -moz-animation: myfirst 3s linear infinite;
@@ -74,5 +107,6 @@ body {
 .revealed {
   background-color: green; }
 
-.detonated {
-  background-color: orange; }
+.mine-icon {
+  height: 25px;
+  width: 25px; }

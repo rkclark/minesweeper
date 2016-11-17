@@ -12,8 +12,55 @@ $color-complement-4: #444545;
 
 $background-col: #31334A;
 
+$button: #FFB744;
+
 body {
   font-family: $mainfont;
   background-color: $background-col;
   color: #fff;
+}
+
+.btn-outline-primary {
+  color: $button;
+  border-color: $button;
+  border: 2px solid;
+  &:hover {
+    background-color: $button;
+    border-color: $button;
+  }
+  &:active, &:focus {
+    border-color: $button;
+    background-color: transparent;
+    color: $button;
+  }
+  &:active:hover {
+    background-color: $button;
+  }
+}
+#header {
+  margin-bottom: 0px;
+}
+
+#header::before {
+  content: "[";
+  color: $button;
+}
+
+#header::after {
+  content: "]";
+  color: $button;
+}
+
+#settings-icon {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  border-radius: 100%;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear;
+}
+
+#settings-icon.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.5s linear;
 }

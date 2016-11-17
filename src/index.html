@@ -23,7 +23,7 @@
 
   <body>
 
-    <nav class="navbar navbar-full navbar-dark bg-inverse">
+    <!-- <nav class="navbar navbar-full navbar-dark bg-inverse">
       <a class="navbar-brand" href="#">Project name</a>
       <ul class="nav navbar-nav">
         <li class="nav-item active">
@@ -36,52 +36,54 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
 
-    <div class="container-fluid mx-1">
+    <div class="container-fluid mx-1" id="main-wrapper">
+      <div class="row flex-items-xs-middle pt-1">
+        <div class="col-xs-2"><img src="../img/cog.svg" id="settings-icon"></div>
+        <div class="col-xs-10"><h1 class="text-xs-right" id="header">Minesweeper</h1></div>
+      </div>
       <div class="row flex-items-xs-middle">
-        <div class="col-xs-12 col-md-3">
-          <div id="settingscontainer">
-            <form action="#" method="post">
-               <h1>Set Up</h1>
-               <fieldset class="form-group">
-                 <legend>Size</legend>
-                   <label for="horizontal" class="col-form-label">Horizontal:</label>
-                   <input class="form-control" type="number" name="horizontal" min="5" max="30" value="20" id="horizontal">
-                   <label for="vertical" class="col-form-label">Vertical:</label>
-                   <input class="form-control" type="number" name="vertical" min="5" max="30" value="20" id="vertical">
-               </fieldset>
-               <fieldset class="form-group">
-                 <legend>Difficulty</legend>
-                 <div class="form-check">
-                   <input type="radio" value="0.05" name="difficulty" id="r1"><label class="form-check-label" for="r1">Walk in the Park</label>
-                 </div>
-                 <div class="form-check">
-                    <input type="radio" value="0.10" name="difficulty" id="r2"><label class="form-check-label" for="r2">Straightforward</label>
-                 </div>
-                 <div class="form-check">
-                   <input type="radio" value="0.15" name="difficulty" checked="checked" id="r3"><label class="form-check-label" for="r3">Sensible</label>
-                 </div>
-                 <div class="form-check">
-                   <input type="radio" value="0.20" name="difficulty" id="r4"><label class="form-check-label" for="r4">Challenging</label>
-                 </div>
-                 <div class="form-check">
-                   <input type="radio" value="0.35" name="difficulty" id="r5"><label class="form-check-label" for="r5">Welcome to the Jungle</label>
-                 </div>
-               </fieldset>
-               <div class="buttoncontainer">
-                 <button id="generate">Generate</button>
-              </div>
-            </form>
-          </div>
-
+        <div class="col-xs-12 col-md-3 py-1" id="settingscontainer">
+          <form action="#" method="post">
+             <fieldset class="form-group">
+               <legend>Size</legend>
+                 <label for="horizontal" class="col-form-label">Horizontal:</label>
+                 <input class="form-control" type="number" name="horizontal" min="5" max="30" value="20" id="horizontal">
+                 <label for="vertical" class="col-form-label">Vertical:</label>
+                 <input class="form-control" type="number" name="vertical" min="5" max="30" value="20" id="vertical">
+             </fieldset>
+             <fieldset class="form-group">
+               <legend>Difficulty</legend>
+               <div class="form-check">
+                 <input type="radio" value="0.05" name="difficulty" id="r1"><label class="form-check-label" for="r1">Walk in the Park</label>
+               </div>
+               <div class="form-check">
+                  <input type="radio" value="0.10" name="difficulty" id="r2"><label class="form-check-label" for="r2">Straightforward</label>
+               </div>
+               <div class="form-check">
+                 <input type="radio" value="0.15" name="difficulty" checked="checked" id="r3"><label class="form-check-label" for="r3">Sensible</label>
+               </div>
+               <div class="form-check">
+                 <input type="radio" value="0.20" name="difficulty" id="r4"><label class="form-check-label" for="r4">Challenging</label>
+               </div>
+               <div class="form-check">
+                 <input type="radio" value="0.35" name="difficulty" id="r5"><label class="form-check-label" for="r5">Welcome to the Jungle</label>
+               </div>
+             </fieldset>
+             <div class="buttoncontainer row flex-items-xs-center">
+               <label id="generate" class="btn btn-outline-primary btn-lg">Generate</label>
+            </div>
+          </form>
         </div>
-        <div class="col-xs-12 col-md-9">
+        <div class="col-xs">
           <div id="gamecontainer" class="text-xs-center">
-            <p id="counter">Mines: <span></span></p>
+            <div class="row flex-items-xs-center py-1">
+              <img src="../img/mine_white.svg" class="mine-icon"><span id="counter"></span>
+            </div>
             <div id="game"></div>
-            <div class="buttoncontainer">
-              <button id="reset">Reset</button>
+            <div class="buttoncontainer py-1">
+              <label id="reset" class="btn btn-outline-primary">Reset</label>
            </div>
             <p id="msgbox"></p>
           </div>

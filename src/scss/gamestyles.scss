@@ -1,35 +1,18 @@
-
-// $covered: #828282;
-// $uncovered: #d7d7d9;
-
 $covered: #be164e;
 $uncovered: #989bc7;
 $marked: #FFB744;
 $markedglow: #be164e;
 
-
-#gamecontainer {
-  max-height: 100vw;
-}
-
-#game {
-
-}
-
 .cell {
-  // display: inline-block;
-  // width: 30px;
-  // height: 30px;
   text-align: center;
   margin: 3px;
   height: auto;
-  // min-width: 1.5em;
   padding: 0px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  // font-weight: bold;
+  font-weight: bold;
 }
 
 .cell:before {
@@ -39,24 +22,14 @@ $markedglow: #be164e;
     float: left;
 }
 
-// .cell-text-wrapper {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
 .cell-text {
   margin: 0;
   height: 100%;
 
 }
 
-.mine {
-
-}
-
 .msrow {
-  margin: 0px !important;
+  margin: auto;
 }
 
 .covered {
@@ -69,13 +42,8 @@ $markedglow: #be164e;
 
 }
 
-.marked {
-  //  background: url("../img/mine.svg") no-repeat center/25px 25px;
-   background: url("../img/mine.svg") no-repeat;
-   background-size: cover;
-  // background-image: url("../img/mine.svg") no-repeat center;
+.marked, .detonated {
    background-color: $covered;
-  //background: $covered,  url("../img/mine.svg");
   animation:myfirst 3s linear infinite;
   -moz-animation:myfirst 3s linear infinite; /* Firefox */
   -webkit-animation:myfirst 3s linear infinite; /* Safari and Chrome */
@@ -113,6 +81,7 @@ $markedglow: #be164e;
 
 }
 
-.detonated {
-  background-color: orange;
+.mine-icon {
+  height: 25px;
+  width: 25px;
 }
