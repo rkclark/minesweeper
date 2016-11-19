@@ -1,13 +1,22 @@
 $(document).ready(function() {
   calculateSize();
   generateGame();
+  if (isTouchDevice()) {
+    $("#cover").show("slow");
+    $("#messages").empty().append("<p class=\"col-xs-12\">Tap to uncover each square, tap and hold to mark them as mines!</p>");
+    $("#messagebutton").empty().text("OK!");
+  }
 });
+
+function isTouchDevice() {
+  return 'ontouchstart' in document.documentElement;
+}
 
 //Autosizes the game based on the window size
 function calculateSize() {
   horiz = Math.floor(($(window).width() * 0.8) / 35);
   $("#horizontal").val(horiz);
-  vert = Math.floor((($(window).height() - 200) * 0.8) / 35);
+  vert = Math.floor((($(window).height() - 160) * 0.8) / 35);
   $("#vertical").val(vert);
 }
 
@@ -166,6 +175,20 @@ function coveredRightClick(e) {
   }
 }
 
+function coveredTaphold() {
+    if (status != "") {
+      //do nothing - game is in win or lose state
+    } else {
+      if ($(this).hasClass("marked")) {
+        removeMark($(this));
+      } else {
+        $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
+        mineCount -= 1;
+        $("#counter").text(mineCount);
+      }
+    }
+}
+
 function removeMark(thisObj) {
   thisObj.removeClass("marked").empty();
   mineCount += 1;
@@ -196,6 +219,8 @@ function resetGame() {
 $("#game").on("click",".covered",coveredClick);
 
 $("#game").on("mousedown",".covered",coveredRightClick);
+
+$("#game").on("taphold",".covered",coveredTaphold);
 
 //Stop right click on covered cell opening right click menu
 $("#game").on("contextmenu",".covered",function(e) {

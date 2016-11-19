@@ -27,18 +27,22 @@ body {
     background-color: $button;
   }
 }
-#header {
+.header {
   margin-bottom: 0px;
 }
 
-#header::before {
+.header::before {
   content: "[";
   color: $button;
 }
 
-#header::after {
+.header::after {
   content: "]";
   color: $button;
+}
+
+#mobile-header {
+  font-size: 2rem;
 }
 
 #settings-icon {

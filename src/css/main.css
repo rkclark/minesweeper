@@ -18,16 +18,19 @@ body {
   .btn-outline-primary:active:hover {
     background-color: #FFB744; }
 
-#header {
+.header {
   margin-bottom: 0px; }
 
-#header::before {
+.header::before {
   content: "[";
   color: #FFB744; }
 
-#header::after {
+.header::after {
   content: "]";
   color: #FFB744; }
+
+#mobile-header {
+  font-size: 2rem; }
 
 #settings-icon {
   height: 40px;
