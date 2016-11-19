@@ -3,15 +3,13 @@ $(document).ready(function() {
   generateGame();
 });
 
+//Autosizes the game based on the window size
 function calculateSize() {
-  horiz = Math.floor(($(window).width() * 0.8) / 40);
+  horiz = Math.floor(($(window).width() * 0.8) / 35);
   $("#horizontal").val(horiz);
-  vert = Math.floor((($(window).height() - 200) * 0.8) / 40);
+  vert = Math.floor((($(window).height() - 200) * 0.8) / 35);
   $("#vertical").val(vert);
 }
-
-//Generate game
-//$(document).ready(generateGame());
 
 function generateGame() {
   numberOfColumns = $("#horizontal").val();
@@ -24,11 +22,10 @@ function generateGame() {
   $(".msrow div").each(seedMines);
   //Post mine Count
   $("#counter").text(mineCount);
-  // generateMineCount();
+  status = "";
 }
 
 function createRows() {
-
     for (var i =1; i <= numberOfRows; i+=1){
     //Create row divs inside the game container div
     $($msrowDiv).addClass("msrow row").appendTo("#game");
@@ -93,9 +90,13 @@ function getNeighbourIds(inputId) {
 }
 
 function gameOver() {
+  status = "lost";
   $(".notmine.marked").removeClass("marked").addClass("uncovered");
   $(".mine").removeClass("marked").addClass("detonated").empty().append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
-  $("#msgbox").text("Detonation! You have lost. Press Reset to try again.");
+  //$("#cover").toggleClass("hidden-xs-up");
+  $("#cover").show("slow");
+  $("#messages").empty().append("<p class=\"col-xs-12\">Detonation!</p><p class=\"col-xs-12\">I'm afraid you've lost.</p>");
+  $("#messagebutton").empty().text("Bummer!");
 }
 
 function uncoverCells() {
@@ -123,17 +124,27 @@ function uncoverCells() {
 }
 
 function coveredClick() {
-  //Evaluate if mine and end game if yes, otherwise, uncover cells
-  if ($(this).hasClass("mine")) {
-    gameOver();
+  if (status != "") {
+    //do nothing, game is either won or lost
   } else {
-    uncoverCells.call(this);
-    if ($(".notmine.covered").length) {
-      //stil got covered mines - do nothing
+    //Evaluate if mine and end game if yes, otherwise, uncover cells
+    if ($(this).hasClass("mine")) {
+      gameOver();
     } else {
-      //game is won
-      console.log("GAMEWON");
-      gameWon();
+      if ($(this).hasClass("marked")) {
+        removeMark($(this));
+      }
+      uncoverCells.call(this);
+      if ($(".notmine.covered").length) {
+        //stil got covered mines - do nothing
+      } else {
+        //game is won
+        console.log("status is "+status)
+        console.log("GAMEWON");
+        if (status == "") {
+          gameWon();
+        }
+      }
     }
   }
 }
@@ -141,21 +152,33 @@ function coveredClick() {
 function coveredRightClick(e) {
   if(e.which == 3) //3 is the which type for right click
   {
+    if (status != "") {
+      //do nothing - game is in win or lose state
+    } else {
       if ($(this).hasClass("marked")) {
-        $(this).removeClass("marked").empty();
-        mineCount += 1;
-        $("#counter").text(mineCount);
+        removeMark($(this));
       } else {
         $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
         mineCount -= 1;
         $("#counter").text(mineCount);
       }
+    }
   }
 }
 
+function removeMark(thisObj) {
+  thisObj.removeClass("marked").empty();
+  mineCount += 1;
+  $("#counter").text(mineCount);
+}
+
 function gameWon() {
+  status = "won";
   //Inform user they have won
-  $("#msgbox").text("Congratulations! Your awesomeness is confirmed. You win!");
+  //$("#cover").toggleClass("hidden-xs-up").fadeIn("slow");
+  $("#cover").show("slow");
+  $("#messages").empty().append("<p class=\"col-xs-12\">You won!</p><p class=\"col-xs-12\">Your awesomeness is confirmed.</p>");
+  $("#messagebutton").empty().text("Hooray!");
   //Change mines from marked to being revealed
   $(".mine").removeClass("marked").addClass("revealed");
 }
@@ -187,26 +210,29 @@ $("#game").on("contextmenu",function(e) {
 
 //Allow user to reset by clicking the reset or generate buttons
 
-$("#reset, #generate").click(function(e) {
+$("#reset").click(function(e) {
   e.preventDefault();
   resetGame();
-  // setHeight();
 });
 
-//Spin settings coveredRightClick
+$("#generate").click(function(e) {
+  e.preventDefault();
+  resetGame();
+  $("#settings-icon").click();
+});
+
+$("#autosize").click(function(e) {
+  e.preventDefault();
+  calculateSize();
+});
+
+$("#messagebutton").click(function(e) {
+  e.preventDefault();
+  $("#cover").hide("slow");
+});
+
+//Spin settings
 $("#settings-icon").click(function(){
   $(this).toggleClass("rotate");
   $("#settingscontainer").toggleClass("fade-out").toggleClass("slide-out");
 });
-
-// function setHeight() {
-//   windowHeight = $(window).innerHeight();
-  //$(".msrow").css('max-width', windowHeight*0.8);
-// };
-
-// $(document).ready(function() {
-//   setHeight();
-//   $(window).resize(function() {
-//     setHeight();
-//   });
-// });

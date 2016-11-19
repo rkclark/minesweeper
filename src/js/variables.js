@@ -6,24 +6,11 @@ var $msrowDiv = "<div></div>";
 var $columnDiv = "<div></div>";
 var minesPercentage = 0.15;
 var mineCount = 0;
-
-//Update number of rows global variable
-// function rowUpdate() {
-//   numberOfRows = $(this).val();
-// }
-
-//Update number of columns global variable
-// function columnUpdate() {
-//   numberOfColumns = $(this).val();
-// }
+var status = "";
 
 //Update difficulty setting global variable
 function difficultyUpdate() {
   minesPercentage = $("input:radio[name=difficulty]:checked").val();
 }
-
-// $("#vertical").keyup(rowUpdate).change(rowUpdate);
-//
-// $("#horizontal").keyup(columnUpdate).change(columnUpdate);
 
 $("input:radio[name=difficulty]").change(difficultyUpdate);

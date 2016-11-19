@@ -54,6 +54,34 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease, flex-basis 2s ease !important; }
 
+#cover {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  width: 100%;
+  height: 100%; }
+
+#message-holder {
+  background-color: #31334A;
+  border-radius: 2%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 10; }
+
+#messages p {
+  font-size: 1.5rem; }
+
+#messagebutton {
+  font-size: 1.5rem; }
+
 .cell {
   text-align: center;
   margin: 3px;
@@ -64,7 +92,9 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  transition: all 0.5s ease; }
+  font-size: 1.2rem;
+  text-shadow: 0 0 2px #000000;
+  transition: all 0.5s ease, background-color 1.5s ease; }
   .cell:hover {
     box-shadow: 0 0 10px #FFFFFF; }
 
@@ -87,42 +117,76 @@ body {
 .uncovered {
   background-color: #989bc7; }
 
-.marked, .detonated {
+.marked {
+  background-color: #FFB744; }
+
+.detonated {
   background-color: #be164e;
-  animation: myfirst 3s linear infinite;
-  -moz-animation: myfirst 3s linear infinite;
+  animation: minemark 3s linear infinite;
+  -moz-animation: minemark 3s linear infinite;
   /* Firefox */
-  -webkit-animation: myfirst 3s linear infinite;
+  -webkit-animation: minemark 3s linear infinite;
   /* Safari and Chrome */
-  -o-animation: myfirst 3s linear infinite;
+  -o-animation: minemark 3s linear infinite;
   /* Opera */ }
 
-@keyframes myfirst {
+@keyframes minemark {
   0%, 100% {
     background: #be164e; }
   50% {
     background: #FFB744; } }
 
-@-moz-keyframes myfirst /* Firefox */ {
+@-moz-keyframes minemark /* Firefox */ {
   0%, 100% {
     background: #be164e; }
   50% {
     background: #FFB744; } }
 
-@-webkit-keyframes myfirst /* Safari and Chrome */ {
+@-webkit-keyframes minemark /* Safari and Chrome */ {
   0%, 100% {
     background: #be164e; }
   50% {
     background: #FFB744; } }
 
-@-o-keyframes myfirst /* Opera */ {
+@-o-keyframes minemark /* Opera */ {
   0%, 100% {
     background: #be164e; }
   50% {
     background: #FFB744; } }
 
 .revealed {
-  background-color: green; }
+  background-color: #1668be;
+  animation: minereveal 3s linear infinite;
+  -moz-animation: minereveal 3s linear infinite;
+  /* Firefox */
+  -webkit-animation: minereveal 3s linear infinite;
+  /* Safari and Chrome */
+  -o-animation: minereveal 3s linear infinite;
+  /* Opera */ }
+
+@keyframes minereveal {
+  0%, 100% {
+    background: #1668be; }
+  50% {
+    background: #989bc7; } }
+
+@-moz-keyframes minereveal /* Firefox */ {
+  0%, 100% {
+    background: #1668be; }
+  50% {
+    background: #989bc7; } }
+
+@-webkit-keyframes minereveal /* Safari and Chrome */ {
+  0%, 100% {
+    background: #1668be; }
+  50% {
+    background: #989bc7; } }
+
+@-o-keyframes minereveal /* Opera */ {
+  0%, 100% {
+    background: #1668be; }
+  50% {
+    background: #989bc7; } }
 
 .mine-icon {
   height: 25px;

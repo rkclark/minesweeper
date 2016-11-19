@@ -72,3 +72,37 @@ body {
   transition: opacity 0.5s ease,
               flex-basis 2s ease !important;
 }
+
+#cover {
+  display: none;
+  position:fixed;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.6);
+  z-index:5;
+  width:100%;
+  height:100%;
+}
+
+#message-holder {
+  background-color: $background-col;
+  border-radius: 2%;
+  position:fixed;
+   left: 50%;
+   top: 50%;
+   -ms-transform: translate(-50%,-50%);
+   -moz-transform:translate(-50%,-50%);
+   -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  z-index: 10;
+}
+
+#messages {
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+#messagebutton {
+  font-size: 1.5rem;
+}

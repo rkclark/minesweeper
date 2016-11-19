@@ -2,6 +2,7 @@ $covered: #be164e;
 $uncovered: #989bc7;
 $marked: #FFB744;
 $markedglow: #be164e;
+$revealed: #1668be;
 
 .cell {
   text-align: center;
@@ -13,7 +14,10 @@ $markedglow: #be164e;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  transition: all 0.5s ease;
+  font-size: 1.2rem;
+  text-shadow: 0 0 2px #000000;
+  transition: all 0.5s ease,
+              background-color 1.5s ease;
   &:hover {
     box-shadow: 0 0 10px #FFFFFF;
   }
@@ -29,7 +33,6 @@ $markedglow: #be164e;
 .cell-text {
   margin: 0;
   height: 100%;
-
 }
 
 .msrow {
@@ -43,36 +46,39 @@ $markedglow: #be164e;
 
 .uncovered {
   background-color: $uncovered;
-
 }
 
-.marked, .detonated {
+.marked {
+  background-color: $marked;
+}
+
+.detonated {
    background-color: $covered;
-  animation:myfirst 3s linear infinite;
-  -moz-animation:myfirst 3s linear infinite; /* Firefox */
-  -webkit-animation:myfirst 3s linear infinite; /* Safari and Chrome */
-  -o-animation:myfirst 3s linear infinite; /* Opera */
+  animation:minemark 3s linear infinite;
+  -moz-animation:minemark 3s linear infinite; /* Firefox */
+  -webkit-animation:minemark 3s linear infinite; /* Safari and Chrome */
+  -o-animation:minemark 3s linear infinite; /* Opera */
   }
 
-  @keyframes myfirst
+  @keyframes minemark
   {
   0%,100%   {background:$markedglow;}
   50%  {background:$marked;}
   }
 
-  @-moz-keyframes myfirst /* Firefox */
+  @-moz-keyframes minemark /* Firefox */
   {
     0%,100%   {background:$markedglow;}
     50%  {background:$marked;}
   }
 
-  @-webkit-keyframes myfirst /* Safari and Chrome */
+  @-webkit-keyframes minemark /* Safari and Chrome */
   {
     0%,100%   {background:$markedglow;}
     50%  {background:$marked;}
   }
 
-  @-o-keyframes myfirst /* Opera */
+  @-o-keyframes minemark /* Opera */
   {
     0%,100%   {background:$markedglow;}
     50%  {background:$marked;}
@@ -81,8 +87,35 @@ $markedglow: #be164e;
 
 
 .revealed {
-  background-color: green;
+  background-color: $revealed;
+ animation:minereveal 3s linear infinite;
+ -moz-animation:minereveal 3s linear infinite; /* Firefox */
+ -webkit-animation:minereveal 3s linear infinite; /* Safari and Chrome */
+ -o-animation:minereveal 3s linear infinite; /* Opera */
+}
 
+@keyframes minereveal
+{
+0%,100%   {background:$revealed;}
+50%  {background:$uncovered;}
+}
+
+@-moz-keyframes minereveal /* Firefox */
+{
+  0%,100%   {background:$revealed;}
+  50%  {background:$uncovered;}
+}
+
+@-webkit-keyframes minereveal /* Safari and Chrome */
+{
+  0%,100%   {background:$revealed;}
+  50%  {background:$uncovered;}
+}
+
+@-o-keyframes minereveal /* Opera */
+{
+  0%,100%   {background:$revealed;}
+  50%  {background:$uncovered;}
 }
 
 .mine-icon {
