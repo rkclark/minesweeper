@@ -6,74 +6,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Minesweeper in javascript">
+    <meta name="author" content="Rick Clark">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
-
+    <title>Minesweeper</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap-flex.min.css">
 
     <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/main.min.css">
   </head>
 
   <body>
-
-    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-      <a class="navbar-brand" href="#">Project name</a>
-      <ul class="nav navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <div id="settingscontainer">
-
-                <form action="#" method="post">
-
-                     <h1>Set Up</h1>
-
-                     <fieldset>
-                       <legend>Size</legend>
-                       <label for="horizontal">Horizontal:</label>
-                       <input type="number" name="horizontal" min="5" max="30" value="20" id="horizontal"><br>
-
-                       <label for="vertical">Vertical:</label>
-                       <input type="number" name="vertical" min="5" max="30" value="20" id="vertical">
-                     </fieldset>
-                     <fieldset>
-                       <legend>Difficulty</legend>
-                       <input type="radio" value="0.05" name="difficulty" id="r1"><label for="r1">Walk in the Park</label><br>
-                       <input type="radio" value="0.10" name="difficulty" id="r2"><label for="r2">Straightforward</label><br>
-                       <input type="radio" value="0.15" name="difficulty" checked="checked" id="r3"><label for="r3">Sensible</label><br>
-                       <input type="radio" value="0.20" name="difficulty" id="r4"><label for="r4">Challenging</label><br>
-                       <input type="radio" value="0.35" name="difficulty" id="r5"><label for="r5">Welcome to the Jungle</label>
-                     </fieldset>
-                     <div class="buttoncontainer">
-                       <button id="generate">Generate</button>
-                    </div>
-          </div>
-
+    <div id="cover">
+      <div id="message-holder" class="px-2 py-2">
+        <div id="messages" class="row text-xs-center">
         </div>
-        <div class="col-sm-9">
-          <div id="gamecontainer">
-            <h1>Play</h1>
-            <p id="counter">Mines: <span></span></p>
+        <div class="buttoncontainer row flex-items-xs-center pt-1">
+          <label id="messagebutton" class="btn btn-outline-primary"></label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container-fluid mx-1" id="main-wrapper">
+      <div class="row flex-items-xs-middle pt-1">
+        <div class="col-xs-2"><img src="img/cog.svg" id="settings-icon"></div>
+        <div class="col-xs-10 hidden-sm-down"><h1 class="text-xs-right header">Minesweeper</h1></div>
+        <div class="col-xs-10 hidden-md-up"><h1 class="text-xs-right header" id="mobile-header">Minesweeper</h1></div>
+      </div>
+      <div class="row flex-items-xs-top">
+        <div class="col-xs-12 col-md-3 py-1 fade-out slide-out" id="settingscontainer">
+          <form action="#" method="post">
+            <fieldset class="form-group">
+              <legend>Difficulty</legend>
+              <div class="form-check">
+                <input type="radio" value="0.05" name="difficulty" id="r1"><label class="form-check-label" for="r1">Walk in the Park</label>
+              </div>
+              <div class="form-check">
+                 <input type="radio" value="0.10" name="difficulty" id="r2"><label class="form-check-label" for="r2">Straightforward</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" value="0.15" name="difficulty" checked="checked" id="r3"><label class="form-check-label" for="r3">Sensible</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" value="0.20" name="difficulty" id="r4"><label class="form-check-label" for="r4">Challenging</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" value="0.35" name="difficulty" id="r5"><label class="form-check-label" for="r5">Welcome to the Jungle</label>
+              </div>
+            </fieldset>
+             <fieldset class="form-group">
+               <legend>Size</legend>
+                 <div class="buttoncontainer row flex-items-xs-center">
+                   <label id="autosize" class="btn btn-outline-primary">Auto-size to Screen</label>
+                 </div>
+                 <label for="horizontal" class="col-form-label">Horizontal:</label>
+                 <input class="form-control" type="number" name="horizontal" min="5" max="100" value="20" id="horizontal">
+                 <label for="vertical" class="col-form-label">Vertical:</label>
+                 <input class="form-control" type="number" name="vertical" min="5" max="100" value="20" id="vertical">
+             </fieldset>
+             <div class="buttoncontainer row flex-items-xs-center">
+               <label id="generate" class="btn btn-outline-primary btn-lg">Generate</label>
+            </div>
+          </form>
+        </div>
+        <div class="col-xs" id="gamecontainer">
+          <div class="text-xs-center">
+            <div class="row flex-items-xs-center py-1">
+              <img src="img/mine_white.svg" class="mine-icon"><span id="counter"></span>
+            </div>
             <div id="game"></div>
-            <div class="buttoncontainer">
-              <button id="reset">Reset</button>
+            <div class="buttoncontainer py-1">
+              <label id="reset" class="btn btn-outline-primary">Reset</label>
            </div>
             <p id="msgbox"></p>
           </div>
@@ -91,6 +98,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

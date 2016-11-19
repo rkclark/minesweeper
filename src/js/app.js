@@ -101,7 +101,7 @@ function getNeighbourIds(inputId) {
 function gameOver() {
   status = "lost";
   $(".notmine.marked").removeClass("marked").addClass("uncovered");
-  $(".mine").removeClass("marked").addClass("detonated").empty().append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
+  $(".mine").removeClass("marked").addClass("detonated").empty().append("<img class=\"img-fluid\" src=\"img/mine.svg\">");
   //$("#cover").toggleClass("hidden-xs-up");
   $("#cover").show("slow");
   $("#messages").empty().append("<p class=\"col-xs-12\">Detonation!</p><p class=\"col-xs-12\">I'm afraid you've lost.</p>");
@@ -167,7 +167,7 @@ function coveredRightClick(e) {
       if ($(this).hasClass("marked")) {
         removeMark($(this));
       } else {
-        $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
+        $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"img/mine.svg\">");
         mineCount -= 1;
         $("#counter").text(mineCount);
       }
@@ -182,7 +182,7 @@ function coveredTaphold() {
       if ($(this).hasClass("marked")) {
         removeMark($(this));
       } else {
-        $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"../img/mine.svg\">");
+        $(this).addClass("marked").append("<img class=\"img-fluid\" src=\"img/mine.svg\">");
         mineCount -= 1;
         $("#counter").text(mineCount);
       }
