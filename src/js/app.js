@@ -1,9 +1,21 @@
+$(document).ready(function() {
+  calculateSize();
+  generateGame();
+});
 
+function calculateSize() {
+  horiz = Math.floor(($(window).width() * 0.8) / 40);
+  $("#horizontal").val(horiz);
+  vert = Math.floor((($(window).height() - 200) * 0.8) / 40);
+  $("#vertical").val(vert);
+}
 
 //Generate game
-$(document).ready(generateGame());
+//$(document).ready(generateGame());
 
 function generateGame() {
+  numberOfColumns = $("#horizontal").val();
+  numberOfRows = $("#vertical").val();
   mineCount = 0;
   createRows();
   //Use createCells function to populate each .msrow div with a row of cells determined by the value of columns
@@ -178,24 +190,23 @@ $("#game").on("contextmenu",function(e) {
 $("#reset, #generate").click(function(e) {
   e.preventDefault();
   resetGame();
-  setHeight();
+  // setHeight();
 });
 
 //Spin settings coveredRightClick
 $("#settings-icon").click(function(){
   $(this).toggleClass("rotate");
-  $("#settingscontainer").slideToggle("slow");
+  $("#settingscontainer").toggleClass("fade-out").toggleClass("slide-out");
 });
 
-function setHeight() {
-  windowHeight = $(window).innerHeight();
-  // $("#game").css('max-height', windowHeight);
-  $(".msrow").css('max-width', windowHeight*0.8);
-};
+// function setHeight() {
+//   windowHeight = $(window).innerHeight();
+  //$(".msrow").css('max-width', windowHeight*0.8);
+// };
 
-$(document).ready(function() {
-  setHeight();
-  $(window).resize(function() {
-    setHeight();
-  });
-});
+// $(document).ready(function() {
+//   setHeight();
+//   $(window).resize(function() {
+//     setHeight();
+//   });
+// });

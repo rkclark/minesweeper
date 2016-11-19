@@ -6,7 +6,8 @@ body {
 .btn-outline-primary {
   color: #FFB744;
   border-color: #FFB744;
-  border: 2px solid; }
+  border: 2px solid;
+  transition: all 0.5s ease; }
   .btn-outline-primary:hover {
     background-color: #FFB744;
     border-color: #FFB744; }
@@ -40,6 +41,19 @@ body {
   transform: rotate(180deg);
   transition: transform 0.5s linear; }
 
+#settingscontainer {
+  transition: opacity 3s ease, flex-basis 0.5s ease;
+  overflow: hidden; }
+
+.slide-out {
+  flex-basis: 0.00001%;
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease, flex-basis 2s ease !important; }
+
 .cell {
   text-align: center;
   margin: 3px;
@@ -49,7 +63,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold; }
+  font-weight: bold;
+  transition: all 0.5s ease; }
+  .cell:hover {
+    box-shadow: 0 0 10px #FFFFFF; }
 
 .cell:before {
   content: "";

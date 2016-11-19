@@ -1,29 +1,29 @@
 
 //Set initial variables
-var numberOfColumns = 20;
-var numberOfRows = 20;
+var numberOfColumns = 0;
+var numberOfRows = 0;
 var $msrowDiv = "<div></div>";
 var $columnDiv = "<div></div>";
 var minesPercentage = 0.15;
 var mineCount = 0;
 
 //Update number of rows global variable
-function rowUpdate() {
-  numberOfRows = $(this).val();
-}
+// function rowUpdate() {
+//   numberOfRows = $(this).val();
+// }
 
 //Update number of columns global variable
-function columnUpdate() {
-  numberOfColumns = $(this).val();
-}
+// function columnUpdate() {
+//   numberOfColumns = $(this).val();
+// }
 
 //Update difficulty setting global variable
 function difficultyUpdate() {
   minesPercentage = $("input:radio[name=difficulty]:checked").val();
 }
 
-$("#vertical").keyup(rowUpdate).change(rowUpdate);
-
-$("#horizontal").keyup(columnUpdate).change(columnUpdate);
+// $("#vertical").keyup(rowUpdate).change(rowUpdate);
+//
+// $("#horizontal").keyup(columnUpdate).change(columnUpdate);
 
 $("input:radio[name=difficulty]").change(difficultyUpdate);

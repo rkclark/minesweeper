@@ -1,15 +1,4 @@
 $mainfont:'Rubik', sans-serif;
-$standardpadding: 10px;
-$inputspacing: 15px;
-
-// Palette URL: http://paletton.com/#uid=70j1W0k00qX00++00Dp00kl0ud5 */
-
-$color-complement-0: #8F8F8F;	// Main Complement color */
-$color-complement-1: #FFFFFF;
-$color-complement-2: #C0C0C0;
-$color-complement-3: #6C6C6C;
-$color-complement-4: #444545;
-
 $background-col: #31334A;
 
 $button: #FFB744;
@@ -24,6 +13,7 @@ body {
   color: $button;
   border-color: $button;
   border: 2px solid;
+  transition: all 0.5s ease;
   &:hover {
     background-color: $button;
     border-color: $button;
@@ -63,4 +53,22 @@ body {
 #settings-icon.rotate {
   transform: rotate(180deg);
   transition: transform 0.5s linear;
+}
+
+#settingscontainer {
+  transition: opacity 3s ease,
+              flex-basis 0.5s ease;
+  overflow: hidden;
+}
+
+.slide-out {
+  flex-basis: 0.00001%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease,
+              flex-basis 2s ease !important;
 }

@@ -13,6 +13,10 @@ $markedglow: #be164e;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  transition: all 0.5s ease;
+  &:hover {
+    box-shadow: 0 0 10px #FFFFFF;
+  }
 }
 
 .cell:before {
